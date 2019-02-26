@@ -11,9 +11,14 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
+
+import net.minecraft.server.v1_13_R2.EntityPlayer;
 
 public class Listeners implements Listener {
 
@@ -23,7 +28,7 @@ public class Listeners implements Listener {
 	 * System.out.println("Something Happened!"); }
 	 */
 
-	@EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+	/*@EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
 	public void checkWeakDeathCharm(InventoryCloseEvent event) {
 		for (ItemStack is : event.getInventory()) {
 			if (is != null || is.hasItemMeta() == false)
@@ -40,6 +45,14 @@ public class Listeners implements Listener {
 					}
 				}
 		}
+	}*/
+	
+	@EventHandler(priority=EventPriority.MONITOR, ignoreCancelled = true)
+	public void tester1(InventoryCloseEvent event) {
+		//AttributeModifier mod = new AttributeModifier("Runic Enhancement", 6.0, Operation.ADD_NUMBER);
+		Player player = (Player) event.getPlayer();
+		PotionEffect effect = new PotionEffect(PotionEffectType.ABSORPTION, 40, 3);
+		player.addPotionEffect(effect);
 	}
 
 }
