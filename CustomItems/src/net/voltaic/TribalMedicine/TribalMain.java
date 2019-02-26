@@ -8,8 +8,8 @@ public class TribalMain extends JavaPlugin{
 	
 	@Override
 	public void onEnable() {
-		System.out.println("Enabling Tribal Medicine");
 		getServer().getPluginManager().registerEvents(new Listeners(), this);
+		System.out.println("Enabled Tribal Medicine");
 	}
 	
 	public void onDisable() {

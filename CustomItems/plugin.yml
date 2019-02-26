@@ -1,5 +1,5 @@
 name: 'TribalMedicine'
-main: net.inizicraft.TribalMedicine.TribalMain
+main: net.voltaic.TribalMedicine.TribalMain
 description: 'A set of items for Inizicraft'
 version: 0.0.1
 api-version: 1.13
