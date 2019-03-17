@@ -44,7 +44,7 @@ public class CraftingLeather implements Listener {
 	
 	public void createLeather() {
 		
-		meta.setDisplayName(ChatColor.AQUA + "" + ChatColor.BOLD + "Crafting Leather");
+		meta.setDisplayName(ChatColor.AQUA + "" + ChatColor.BOLD + "Portable Crafting Leather");
 		ArrayList<String> lore = new ArrayList<String>();
 		lore.add(ChatColor.GREEN + "Tribal Medicine - Crafting Leather");
 		lore.add(ChatColor.WHITE + "Allows the user to craft Items on the fly");

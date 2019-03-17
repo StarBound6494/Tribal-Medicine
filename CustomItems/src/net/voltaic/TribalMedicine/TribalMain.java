@@ -9,6 +9,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class TribalMain extends JavaPlugin{
 	
+	public BrewStation[] brewStations;
+	
 	@Override
 	public void onEnable() {
 		getServer().getPluginManager().registerEvents(new Listeners(), this);
@@ -17,12 +19,13 @@ public class TribalMain extends JavaPlugin{
 		command.setTabCompleter(new ImplementsTabCompleter());
 		
 		CraftingLeather items = new CraftingLeather();
-		NamespacedKey key = new NamespacedKey(this, "fuckyou");
+		NamespacedKey key = new NamespacedKey(this, "fuckoff");
 		items.craftingLeather(key);
 		
 		System.out.println("Tribal Medicine Enabled.");
 	}
 	
+	@Override
 	public void onDisable() {
 		System.out.println("Inizibrew Disabled");
 	}
@@ -34,10 +37,16 @@ public class TribalMain extends JavaPlugin{
 			if(args[0].equalsIgnoreCase("info"))
 				sender.sendMessage("The Tribal Medicine Plugin created for the Inizicraft server adds"+
 						" custom recipies and mechanics centered around progressive crafting and player advancment");
-			else if(args[0].equalsIgnoreCase("giveLeather")) {
-				CraftingLeather cr = new CraftingLeather();
-				cr.giveItems((Player)sender);
-			}
+			//admin commands
+			else if(sender.hasPermission("tribal.admin"))
+					if(args[0].equalsIgnoreCase("giveLeather")) {
+						CraftingLeather cr = new CraftingLeather();
+						cr.giveItems((Player)sender);
+					}
+					else if(args[0].equalsIgnoreCase("giveelixir")) {
+						InstantPotion ip = new InstantPotion();
+						ip.giveItems((Player)sender, args[1]);
+					}
 		}
 		
 		return true;
