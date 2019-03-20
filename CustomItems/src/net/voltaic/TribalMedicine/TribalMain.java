@@ -9,8 +9,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class TribalMain extends JavaPlugin{
 	
-	public BrewStation[] brewStations;
-	
 	@Override
 	public void onEnable() {
 		getServer().getPluginManager().registerEvents(new Listeners(), this);
@@ -46,6 +44,10 @@ public class TribalMain extends JavaPlugin{
 					else if(args[0].equalsIgnoreCase("giveelixir")) {
 						InstantPotion ip = new InstantPotion();
 						ip.giveItems((Player)sender, args[1]);
+					}
+					else if(args[0].equalsIgnoreCase("openStation")) {
+						brewingStation station = new brewingStation();
+						station.openStation((Player) sender);
 					}
 		}
 		

@@ -5,11 +5,16 @@ import java.util.ArrayList;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.inventory.ClickType;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 public class Listeners implements Listener {
@@ -42,14 +47,30 @@ public class Listeners implements Listener {
 			if(event.getBlockPlaced().getType() == Material.CAULDRON)
 				if(event.getBlockAgainst().getType() == Material.MAGMA_BLOCK) {
 					event.getPlayer().sendMessage(ChatColor.GREEN  + "You created a Brewing Station!");
-					try {
-						BrewStation newStation = new BrewStation(event.getBlock());
-					} catch (IOException e) {
-						System.out.println("An Error Occured on creation of a Brew Station.");
-						e.printStackTrace();
-					}
 				}
 				
+	}
+	
+	@EventHandler
+	public void InvenClick(InventoryClickEvent event) {
+		Player player = (Player) event.getWhoClicked();
+		
+		Inventory open = event.getClickedInventory();
+		ItemStack item = event.getCurrentItem();
+		
+		if(open == null)
+			return;
+		if(open.getName().equals(ChatColor.DARK_GREEN + "Brewing Station")) {
+			event.setCancelled(true);
+			if(item.equals(null) || !item.hasItemMeta())
+				return;
+		}
+		if(item.getItemMeta().getDisplayName().equals(ChatColor.RED + "Health")) {
+			player.closeInventory();
+			brewingStation ci = new brewingStation();
+			ci.newInv(player);
+			player.setHealth(20);
+		}
 	}
 
 }

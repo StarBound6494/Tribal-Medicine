@@ -18,6 +18,7 @@ public class ImplementsTabCompleter implements TabCompleter{
 		out.add("info");
 		out.add("giveleather");
 		out.add("giveElixir");
+		out.add("openStation");
 		
 		return out;
 		
