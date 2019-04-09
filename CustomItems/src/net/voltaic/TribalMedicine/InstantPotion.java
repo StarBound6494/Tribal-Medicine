@@ -16,12 +16,11 @@ public class InstantPotion {
 
 	public ItemStack item = new ItemStack(Material.POTION);
 	public ItemStack bottle = new ItemStack(Material.GLASS_BOTTLE);
-	private ItemStack air = new ItemStack(Material.AIR);
 	private ItemMeta meta = item.getItemMeta();
+	private String name;
 	private String type;
 	private String tier = "1";
 	private String doses = "3";
-	private PotionEffect effect;
 
 	public void giveItems(Player player, String type) {
 		createPotion(type);
@@ -33,8 +32,10 @@ public class InstantPotion {
 	}
 
 	public void createPotion(String n) {
-		type = n;
-		meta.setDisplayName(ChatColor.GREEN + "" + ChatColor.BOLD +"Elixir of " + type);
+		name = n;
+		meta.setDisplayName(ChatColor.GREEN + "" + ChatColor.BOLD +"Elixir of " + name);
+		Effects effect = new Effects();
+		type = effect.convertType(name);
 		ArrayList<String> lore = new ArrayList<String>();
 		lore.add(ChatColor.GREEN + "Tribal Medicine - Elixir");
 		lore.add(ChatColor.WHITE + "Doses: " + doses);
@@ -61,7 +62,7 @@ public class InstantPotion {
 		PotionEffect effect = converter.convertEffects(type, Integer.valueOf(tier));
 		sender.addPotionEffect(effect);
 		
-		if(sender.getInventory().getItemInMainHand() == returnPotion(type))
+		if(sender.getInventory().getItemInMainHand().equals(returnPotion(type)))
 			if(doses.equalsIgnoreCase("1")) {
 				sender.getInventory().setItemInMainHand(bottle);
 			}
@@ -77,7 +78,7 @@ public class InstantPotion {
 				sender.getInventory().setItemInMainHand(bottle);;
 				sender.getInventory().setItemInMainHand(returnPotion(type));
 			}
-		else if(sender.getInventory().getItemInOffHand() == returnPotion(type))
+		else if(sender.getInventory().getItemInOffHand().equals(returnPotion(type)))
 			if(doses.equalsIgnoreCase("1")) {
 				sender.getInventory().setItemInOffHand(bottle);
 			}

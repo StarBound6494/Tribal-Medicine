@@ -1,26 +1,20 @@
 package net.voltaic.TribalMedicine;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
-import org.bukkit.event.block.BlockEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
-import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerItemConsumeEvent;
 import org.bukkit.inventory.EquipmentSlot;
-import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -94,6 +88,14 @@ public class Listeners implements Listener {
 				Player sender = event.getPlayer();
 				s.openStation(sender);
 			}
+	}
+	
+	@EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+	public void checkPotionRecipe(InventoryClickEvent event) {
+		if(event.getInventory().getTitle().equalsIgnoreCase(ChatColor.DARK_GREEN + "Brewing Station")) {
+			
+		}
+		else return;
 	}
 
 	/*

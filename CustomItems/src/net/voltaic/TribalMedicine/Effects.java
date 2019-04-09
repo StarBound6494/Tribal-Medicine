@@ -30,4 +30,21 @@ public class Effects {
 			
 			return res;
 	}
+	
+	public String convertType(String n) {
+		
+		String[] names = {"Temporary Health", "Darkness", "the Depths", "Distortment", "Warding", "Quickened Swiming", "Fast Acting", "Fire Resistance",
+				"Farie Fire", "Inflict Wounds", "Healing", "Constitution", "Famine", "Heavy Strikes", "the Wraith", "Long Jumping", "Levitation", "Good Chances", "Darkvision", "Poison", "Regeneration",
+				"Feasting", "Slowness", "Stunning", "Feather Falling", "Long Striding", "Unluck", "Gills", "Enfeeblement", "Decay"};
+		String[] types = {"Absorption", "Blindness", "Conduit_Power", "Confusion", "Damage_Resistance", "Dolphins_Grace", "Fast_Digging", "Fire_Resistance",
+					"Glowing", "Harm", "Heal", "Health_Boost", "Hunger", "Increase_Damage", "Invisibility", "Jump", "Levitation", "Luck", "Night_Vision", "Poison", "Reeneration",
+					"Saturation", "Slow", "Slow_Digging", "Slow_Falling", "Speed", "Unluck", "Water_Breathing", "Weakness", "Wither"};
+		
+		for(int i = 0; i < names.length; i++) {
+			if(names[i].equalsIgnoreCase(n))
+			return types[i];
+		}
+		
+		return "Healing";
+	}
 }
