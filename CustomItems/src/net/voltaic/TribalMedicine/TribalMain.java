@@ -25,7 +25,7 @@ public class TribalMain extends JavaPlugin{
 	
 	@Override
 	public void onDisable() {
-		System.out.println("Inizibrew Disabled");
+		System.out.println("Tribal Medicine Disabled");
 	}
 	
 	//Commands

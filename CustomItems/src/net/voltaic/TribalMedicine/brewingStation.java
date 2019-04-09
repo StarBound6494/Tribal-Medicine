@@ -12,25 +12,24 @@ import org.bukkit.plugin.Plugin;
 public class brewingStation implements Listener{
 	
 	private Plugin plugin = TribalMain.getPlugin(TribalMain.class);
-	public Inventory i = plugin.getServer().createInventory(null, 9,  ChatColor.DARK_GREEN + "Brewing Station");
+	public Inventory i = plugin.getServer().createInventory(null, 27,  ChatColor.DARK_GREEN + "Brewing Station");
 	
 	public void newInv(Player player) {
-		int healthint = (int) player.getHealth();
-		int foodint = player.getFoodLevel();
 		
-		ItemStack empty = new ItemStack(Material.GRAY_STAINED_GLASS);
+		ItemStack empty = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
 		ItemMeta emptyMeta = empty.getItemMeta();
-		emptyMeta.setDisplayName("'");
+		emptyMeta.setDisplayName("");
 		empty.setItemMeta(emptyMeta);
 		
 		ItemStack health = new ItemStack(Material.ROSE_RED);
 		ItemMeta hmeta = health.getItemMeta();
 		hmeta.setDisplayName(ChatColor.RED + "Health");
 		health.setItemMeta(hmeta);
+		
 		ItemStack food = new ItemStack(Material.APPLE);
 		ItemMeta fmeta = food.getItemMeta();
 		fmeta.setDisplayName(ChatColor.RED + "Food");
-		food.setItemMeta(hmeta);
+		food.setItemMeta(fmeta);
 		
 		i.setItem(0, empty);
 		i.setItem(1, empty);
@@ -41,9 +40,8 @@ public class brewingStation implements Listener{
 		i.setItem(6, empty);
 		i.setItem(7, empty);
 		i.setItem(8, empty);
-		i.setItem(9, empty);
 		
-		player.openInventory(i);
+		//player.openInventory(i);
 	}
 
 	public void openStation(Player sender) {
