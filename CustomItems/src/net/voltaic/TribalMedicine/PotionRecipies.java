@@ -16,6 +16,8 @@ public class PotionRecipies {
 	private ItemStack ing2;
 	private ItemStack ing3;
 	
+	private String name = "";
+	
 	public void checkRecipies(Inventory i) {
 		ItemStack[] inv = i.getContents();
 		// -D-B-IIII-
@@ -26,8 +28,23 @@ public class PotionRecipies {
 					;
 	}
 	
-	public void createRecipies(){
+	public static ItemStack[][] createRecipies(int numRecs){
+		ItemStack[][] recipies = null;
 		
+		for(int i = 0; i < numRecs; i++) {
+			recipies[0][i] = null;
+		}
+		
+		
+		return recipies;
+	}
+	
+	private String assignName(int i) {
+		String[] names = {"Temporary Health", "Darkness", "the Depths", "Distortment", "Warding", "Quickened Swiming", "Fast Acting", "Fire Resistance",
+				"Farie Fire", "Inflict Wounds", "Healing", "Constitution", "Famine", "Heavy Strikes", "the Wraith", "Long Jumping", "Levitation", "Good Chances", "Darkvision", "Poison", "Regeneration",
+				"Feasting", "Slowness", "Stunning", "Feather Falling", "Long Striding", "Unluck", "Gills", "Enfeeblement", "Decay"};
+		
+		return names[i];
 	}
 
 }

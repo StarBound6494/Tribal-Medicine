@@ -5,9 +5,12 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class TribalMain extends JavaPlugin{
+	
+	public ItemStack[][] potRecipies;
 	
 	@Override
 	public void onEnable() {
@@ -19,6 +22,9 @@ public class TribalMain extends JavaPlugin{
 		CraftingLeather items = new CraftingLeather();
 		NamespacedKey key = new NamespacedKey(this, "fuckoff");
 		items.craftingLeather(key);
+		
+		int numRecipies = 30; //The number of recipies registered with the plugin. 
+		//potRecipies = PotionRecipies.createRecipies(numRecipies);
 		
 		System.out.println("Tribal Medicine Enabled.");
 	}
